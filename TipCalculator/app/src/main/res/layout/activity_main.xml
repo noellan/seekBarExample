@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.tipcalculator.MainActivity"
-    android:background="#d3d3d3">
+    android:background="#d3d3d3"
+    android:layout_gravity="center">
 
    <TextView
        android:id="@+id/titleView"
@@ -25,13 +26,14 @@
 
         <TextView
             android:id="@+id/billAmount"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="@string/inputLabel"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:textColor="#000000"/>
 
         <EditText
+            android:id="@+id/billInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="5"
@@ -50,13 +52,14 @@
 
         <TextView
             android:id="@+id/NoOfPpl"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="@string/inputLabel2"
             android:textSize="25sp"
             android:textColor="#000000"/>
 
         <EditText
+            android:id="@+id/pplInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="5"
@@ -66,16 +69,87 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/seekLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/inputLayout2"/>
+
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/inputLayout2"
-        android:layout_marginTop="123dp"
+        android:layout_below="@id/seekLabel"
         android:max="20"
-        android:min="10"
-        android:progress="5"/>
+        android:progress="10"/>
+
+    <LinearLayout
+        android:id="@+id/inputLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/seekBar">
+
+        <TextView
+            android:id="@+id/tipAmt"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/tipAmount"
+            android:textSize="30sp"
+            android:textColor="#000000"/>
+
+        <EditText
+            android:id="@+id/tipOutput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="5"
+            android:inputType="number"
+            android:textSize="30sp"
+            android:textColor="#000000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/inputLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/inputLayout3">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Owe"
+            android:textColor="#000000"
+            android:textSize="30sp"/>
+
+        <EditText
+            android:id="@+id/output"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="5"
+            android:textSize="30sp"
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Checkbox"
+        android:layout_below="@id/inputLayout4"/>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/check"
+        android:text="@string/Button"
+        android:onClick="buttonPressed"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

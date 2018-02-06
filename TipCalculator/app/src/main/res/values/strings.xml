@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Tip Calculator</string>
     <string name="title">Tip Calulator</string>
-    <string name="inputLabel">Bill Amount</string>
-    <string name="inputLabel2">Number of Diners</string>
+    <string name="inputLabel">Bill Amount:</string>
+    <string name="inputLabel2">Number of Diners:</string>
+    <string name="tipAmount">Tip Amount:</string>
+    <string name="Owe">Amount Due:</string>
+    <string name="Button">Calculate</string>
+    <string name="Checkbox">Split Amount?</string>
 </resources>
