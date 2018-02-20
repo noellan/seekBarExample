@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -60,6 +61,38 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        pplInput.setOnEditorActionListener(
+                new TextView.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                        buttonPressed(textView);
+                        return false;
+                    }
+                }
+        );
+
+        check.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        buttonPressed(compoundButton);
+                    }
+                }
+        );
+
+        if(savedInstanceState != null){
+            tipOutput.setText(savedInstanceState.getString("TIP"));
+            output.setText(savedInstanceState.getString("TOTAL"));
+        }
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString("TIP", tipOutput.getText().toString());
+        savedInstanceState.putString("TOTAL", output.getText().toString());
     }
 
     public void buttonPressed(View v){

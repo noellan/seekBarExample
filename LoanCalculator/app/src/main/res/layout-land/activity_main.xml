@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:id="@+id/costLayout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
@@ -23,16 +23,17 @@
             android:id="@+id/carcostinput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="5"
+            android:ems="3"
+            android:imeOptions="flagNoExtractUi"
             android:inputType="numberDecimal"
-            android:textSize="30sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="30sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/DPLayout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/costLayout">
@@ -49,16 +50,17 @@
             android:id="@+id/DPinput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="5"
-            android:textSize="30sp"
+            android:ems="3"
+            android:inputType="numberDecimal"
+            android:imeOptions="flagNoExtractUi"
             android:textColor="#000000"
-            android:inputType="numberDecimal"/>
+            android:textSize="30sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/APRLayout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/DPLayout">
@@ -75,10 +77,11 @@
             android:id="@+id/APRinput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="5"
-            android:textSize="30sp"
+            android:ems="3"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="numberDecimal"
             android:textColor="#000000"
-            android:inputType="numberDecimal"/>
+            android:textSize="30sp" />
 
     </LinearLayout>
 
@@ -118,11 +121,11 @@
         android:id="@+id/seekLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Length of Time(months): 24"
         android:layout_below="@id/radioThings"
+        android:layout_centerHorizontal="true"
+        android:text="Length of Time(months): 24"
         android:textColor="#000000"
-        android:textSize="15sp"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="15sp" />
 
     <SeekBar
         android:id="@+id/seekBar"
@@ -137,25 +140,24 @@
 
     <LinearLayout
         android:id="@+id/resultLayout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="24dp"
-        android:layout_below="@id/seekBar">
+        android:layout_below="@id/seekBar"
+        >
 
         <TextView
             android:id="@+id/payment"
-            android:layout_width="250dp"
+            android:layout_width="202dp"
             android:layout_height="wrap_content"
             android:text="@string/result"
-            android:textSize="25sp"
             android:textColor="#000000"
-            />
+            android:textSize="22sp" />
 
         <EditText
             android:id="@+id/paymentOutput"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
             android:ems="5"
             android:textSize="30sp" />
 
