@@ -37,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
         movieTitles.add("John Wick");
         movieTitles.add("Beauty and the Beast");
 
-        movies.add("tt1825683/");
-        movies.add("tt1392170/");
-        movies.add("tt2911666/");
-        movies.add("tt2771200/");
+        movies.add("1825683/");
+        movies.add("1392170/");
+        movies.add("2911666/");
+        movies.add("2771200/");
 
         adapter = new ArrayAdapter<String>(this, R.layout.list_item_view, movieTitles);
         list.setAdapter(adapter);
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Intent in = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.imbd.com/title/"+movies.get(i)));
+                        Intent in = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.imdb.com/title/tt"+movies.get(i)));
                         startActivity(in);
                     }
                 }
@@ -86,5 +86,10 @@ public class MainActivity extends AppCompatActivity {
                 list.setAdapter(adapter);
             }
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
     }
 }
