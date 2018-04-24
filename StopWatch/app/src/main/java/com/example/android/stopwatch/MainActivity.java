@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private Update update;
     private long startTime;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

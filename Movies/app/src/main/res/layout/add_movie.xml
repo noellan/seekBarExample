@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.movies.AddMovie">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="60dp"
+        android:layout_toLeftOf="@+id/imbdcode"
+        android:layout_toStartOf="@+id/imbdcode"
+        android:text="Title:"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/movietitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/title"
+        android:layout_alignBottom="@+id/title"
+        android:layout_alignLeft="@+id/imbdcode"
+        android:layout_alignStart="@+id/imbdcode"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/imbd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/movietitle"
+        android:text="IMBD Code:"
+        android:textSize="25sp"/>
+
+    <EditText
+        android:id="@+id/imbdcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/imbd"
+        android:layout_alignBottom="@+id/imbd"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_toEndOf="@+id/imbd"
+        android:layout_toRightOf="@+id/imbd"
+        android:ems="10" />
+
+</RelativeLayout>
