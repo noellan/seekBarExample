@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -16,13 +15,15 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     private GridLayout slots;
     private SeekBar seekBar;
     private TextView pointview;
     private Handler handler;
     private Update update;
-    //    private RadioGroup radioGroup;
     private RelativeLayout layout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,30 +36,7 @@ public class MainActivity extends AppCompatActivity {
         update = new Update();
         handler.postDelayed(update, 1000);
         layout = findViewById(R.id.layout);
-//        radioGroup = findViewById(R.id.radiogroup);
         layout.setBackgroundColor(0xFFFFF00);
-
-//        radioGroup.setOnCheckedChangeListener(
-//                new RadioGroup.OnCheckedChangeListener() {
-//                    @Override
-//                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-//                        switch (i) {
-/*                            case R.id.whiteButton:
-                                color = 0xFFFFFFFF;
-                                break;
-                            case R.id.pinkButton:
-                                color = 0xFFFFFFFF;
-                                break;
-                            case R.id.yellowButton:
-                                color = 0xFFFFFF00;
-                                break;
-                        }
-                    }
-                }
-        );
-    }
-
-     */
 
         seekBar.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
@@ -90,11 +68,14 @@ public class MainActivity extends AppCompatActivity {
             imageview.setImageDrawable(getResources().getDrawable(R.drawable.cherry));
             imageview.setImageDrawable(getResources().getDrawable(R.drawable.grape));
             imageview.setImageDrawable(getResources().getDrawable(R.drawable.pear));
+            imageview.setImageDrawable(getResources().getDrawable(R.drawable.strawberry));
             handler.postDelayed(update, 100);
         }
     }
 
     public void buttonPressed(View v) {
+        rotate=Integer.parseInt(getString(R.string.3));
+        v.startAnimation(rotate);
         Intent i = new Intent(this, ColorActivity.class);
         startActivityForResult(i, 1);
     }
