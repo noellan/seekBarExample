@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Movie;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
@@ -17,7 +18,11 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import static android.content.DialogInterface.*;
 
@@ -39,15 +44,25 @@ public class MainActivity extends AppCompatActivity {
         movies = new ArrayList<String>();
         final ArrayAdapter<String> adapter;
 
-        movieTitles.add("Black Panther");
-        movieTitles.add("The Hunger Games");
-        movieTitles.add("John Wick");
-        movieTitles.add("Beauty and the Beast");
+        SharedPreferences p =getPreferences(Context.MODE_PRIVATE);
 
-        movies.add("1825683/");
-        movies.add("1392170/");
-        movies.add("2911666/");
-        movies.add("2771200/");
+        int size = p.getInt("size", 0);
+        for(int j=0; j<size; j++){
+            movieTitles.add(p.getString("title"+j,null));
+            movies.add(p.getString("code"+j,null));
+        }
+
+        if(size==0){
+            movieTitles.add("Black Panther");
+            movieTitles.add("The Hunger Games");
+            movieTitles.add("John Wick");
+            movieTitles.add("Beauty and the Beast");
+
+            movies.add("1825683/");
+            movies.add("1392170/");
+            movies.add("2911666/");
+            movies.add("2771200/");
+        }
 
         adapter = new ArrayAdapter<String>(this, R.layout.list_item_view, movieTitles);
         list.setAdapter(adapter);
@@ -118,9 +133,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-    SharedPreferences.Editor editor = preferences.edit();
-    Gson
+    public void onStop(){
+        super.onStop();
+        SharedPreferences p =getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor e = p.edit();
 
-
+        for(int i=0; i<movieTitles.size(); i++){
+            e.putString("title"+i,movieTitles.get(i));
+            e.putString("code"+i, movies.get(i));
+        }
+        e.putInt("size",movieTitles.size());
+        e.commit();
+    }
 }
