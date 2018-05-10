@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -21,85 +22,166 @@ import java.util.List;
 
 public class PlayGame extends AppCompatActivity{
 
-    private List<Question> qlist;
     private int points = 0;
-    private int qid = 0;
-    private Question ques;
-    private TextView Q;
-    RadioGroup qg;
-    private RadioButton a, b, c, d;
+    private RadioButton a, b, c, d, a2, b2, c2, d2, a3, b3, c3, d3;
     private Button next;
+    private RadioGroup q1, q2, q3;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questions);
 
-        Q = findViewById(R.id.question1);
-        a = findViewById(R.id.OpA);
-        b = findViewById(R.id.OpB);
-        c = findViewById(R.id.OpC);
-        d = findViewById(R.id.OpD);
-        qg = findViewById(R.id.qs1);
+        q1 = findViewById(R.id.qs1);
+        q2 = findViewById(R.id.qs2);
+        q3 = findViewById(R.id.qs3);
+
+        a = findViewById(R.id.OpA2);
+        b = findViewById(R.id.OpB2);
+        c = findViewById(R.id.OpC2);
+        d = findViewById(R.id.OpD2);
         next = findViewById(R.id.nxtbtn);
 
-        Game database = new Game(this);
-        qlist = database.getQuestions();
-        ques = qlist.get(qid);
+        a2 = findViewById(R.id.OpA);
+        b2 = findViewById(R.id.OpB);
+        c2 = findViewById(R.id.OpC);
+        d2 = findViewById(R.id.OpD);
 
-        QuestionView();
-        next.setOnClickListener(new View.OnClickListener() {
+        a3 = findViewById(R.id.A3);
+        b3 = findViewById(R.id.B3);
+        c3 = findViewById(R.id.C3);
+        d3 = findViewById(R.id.D3);
+
+
+
+        a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-                RadioButton ans = (RadioButton) findViewById(qg.getCheckedRadioButtonId());
-                if(ques.getAns().equals(ans.getText())){
-                    points+=5;
-                } if (qid < 4){
-                    ques=qlist.get(qid);
-                    QuestionView();
-                } else {
-                    if(points>=15){
-                        AlertDialog alertDialog = new AlertDialog.Builder(PlayGame.this).create();
-                        alertDialog.setTitle("Results!");
-                        alertDialog.setMessage("Congratulations! You won!");
-                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        dialogInterface.dismiss();
-                                    }
-                                });
-
-                    } else {
-                        AlertDialog alertDialog = new AlertDialog.Builder(PlayGame.this).create();
-                        alertDialog.setTitle("Results!");
-                        alertDialog.setMessage("Sorry. You lost");
-                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        dialogInterface.dismiss();
-                                    }
-                                });
-                    }
-
-                }
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                math(compoundButton);
+            }
+        });
+        b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                math(compoundButton);
+            }
+        });
+        c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                math(compoundButton);
+            }
+        });
+        d.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                math(compoundButton);
+            }
+        });
+        a2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                math(compoundButton);
+            }
+        });
+        b2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                math(compoundButton);
+            }
+        });
+        c2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                math(compoundButton);
+            }
+        });
+        d2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                math(compoundButton);
+            }
+        });
+        a3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                math(compoundButton);
+            }
+        });
+        b3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                math(compoundButton);
+            }
+        });
+        c3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                math(compoundButton);
+            }
+        });
+        d3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                math(compoundButton);
             }
         });
 
 
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(PlayGame.this);
+                    builder.setTitle("Results!");
+                    if(points >= 10) {
+                        builder.setMessage("You know your stuff!");
+                    } else {
+                        builder.setMessage("You got some studying to do, pal!");
+                    }
+                        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            q1.clearCheck();
+                            q2.clearCheck();
+                            q3.clearCheck();
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
 
-
+                    return;
+                }
+        });
     }
 
-    public void QuestionView(){
-        Q.setText(ques.getQuestion());
-        a.setText(ques.getA());
-        b.setText(ques.getB());
-        c.setText(ques.getC());
-        d.setText(ques.getD());
-        qid++;
+    public int math(View v) {
+        int p;
+
+        if (a2.isChecked()) {
+            p = 5;
+        } else {
+            p = 0;
+        }
+
+        int p2;
+        if (c.isChecked()) {
+            p2 = 5;
+        } else {
+            p2 = 0;
+        }
+
+        int p3;
+        if (c3.isChecked()) {
+            p3 = 5;
+        } else {
+            p3 = 0;
+        }
+
+        points = p + p2 + p3;
+
+        return points;
     }
 
 }

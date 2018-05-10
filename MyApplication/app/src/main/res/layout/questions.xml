@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffd1dc">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_centerInParent="true">
 
         <TextView
-            android:id="@+id/question1"
+            android:id="@+id/question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/question_one"
-            android:textSize="25dp"/>
+            android:text="@string/question_two"
+            android:textSize="20dp"/>
 
         <RadioGroup
             android:id="@+id/qs1"
@@ -26,42 +30,141 @@
                 android:id="@+id/OpA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Whale"
+                android:text="Harp"
                 android:checked="false"
-                android:textSize="20dp"/>
+                android:textSize="15dp"/>
 
             <RadioButton
                 android:id="@+id/OpB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
-                android:textSize="20dp"
-                android:text="Goldfish"/>
+                android:textSize="15dp"
+                android:text="Piano"/>
 
             <RadioButton
                 android:id="@+id/OpC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
-                android:textSize="20dp"
-                android:text="Octopus"/>
+                android:textSize="15dp"
+                android:text="Violin"/>
 
             <RadioButton
                 android:id="@+id/OpD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
-                android:textSize="20dp"
-                android:text="Foraging Squid"/>
+                android:textSize="15dp"
+                android:text="Zither"/>
         </RadioGroup>
+
+        <TextView
+            android:id="@+id/question2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/question_one"
+            android:textSize="20dp"/>
+
+        <RadioGroup
+            android:id="@+id/qs2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <RadioButton
+                android:id="@+id/OpA2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Whale"
+                android:textSize="15dp" />
+
+            <RadioButton
+                android:id="@+id/OpB2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Goldfish"
+                android:textSize="15dp" />
+
+            <RadioButton
+                android:id="@+id/OpC2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Octopus"
+                android:textSize="15dp" />
+
+            <RadioButton
+                android:id="@+id/OpD2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Foraging Squid"
+                android:textSize="15dp" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/qs3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/question_three"
+                android:textSize="20dp"/>
+
+            <RadioButton
+                android:id="@+id/A3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mars"
+                android:checked="false"
+                android:textSize="15dp"
+                android:layout_gravity="center"/>
+
+            <RadioButton
+                android:id="@+id/B3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:textSize="15dp"
+                android:text="Venus"
+                android:layout_gravity="center"/>
+
+            <RadioButton
+                android:id="@+id/C3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:textSize="15dp"
+                android:text="Earth"
+                android:layout_gravity="center"
+                />
+
+            <RadioButton
+                android:id="@+id/D3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:textSize="15dp"
+                android:text="Mercury"
+                android:layout_gravity="center"/>
+
+        </RadioGroup>
+
 
         <Button
             android:id="@+id/nxtbtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
-            android:text="Next"/>
+            android:text="Submit"/>
 
     </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
