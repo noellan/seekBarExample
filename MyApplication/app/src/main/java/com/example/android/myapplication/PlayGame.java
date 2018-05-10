@@ -1,5 +1,7 @@
 package com.example.android.myapplication;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -57,7 +59,31 @@ public class PlayGame extends AppCompatActivity{
                     ques=qlist.get(qid);
                     QuestionView();
                 } else {
-                    AlertDialog 
+                    if(points>=15){
+                        AlertDialog alertDialog = new AlertDialog.Builder(PlayGame.this).create();
+                        alertDialog.setTitle("Results!");
+                        alertDialog.setMessage("Congratulations! You won!");
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.dismiss();
+                                    }
+                                });
+
+                    } else {
+                        AlertDialog alertDialog = new AlertDialog.Builder(PlayGame.this).create();
+                        alertDialog.setTitle("Results!");
+                        alertDialog.setMessage("Sorry. You lost");
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.dismiss();
+                                    }
+                                });
+                    }
+
                 }
             }
         });

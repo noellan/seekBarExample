@@ -25,18 +25,18 @@ public class Game extends SQLiteOpenHelper{
     private SQLiteDatabase database;
 
     public Game(Context context) {
-        super(context, Environment.getExternalStorageDirectory() + File.separator + "Trivia" + File.separator + TBL_NAME, null,1);
+        super(context, DB_NAME, null, DB_VERSION);
     }
 
 
     @Override
-    public void onCreate(SQLiteDatabase dt) {
-        database = dt;
-        String SQL = "CREATE TABLE IF NOT EXISTS" + TBL_NAME + "(" +
-                KEY_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                KEY_Q + " TEXT, " + KEY_1 + " TEXT, " + KEY_2 + " TEXT, " +
-                KEY_3 + " TEXT, " + KEY_4 + " TEXT)";
-        dt.execSQL(SQL);
+    public void onCreate(SQLiteDatabase db) {
+        String create = "CREATE TABLE IF NOT EXISTS " + TBL_NAME + " (" +
+                KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                KEY_Q + " TEXT, " + KEY_ANS + " TEXT, " +
+                KEY_1 + " TEXT, " + KEY_2 + " TEXT, " +
+                KEY_3 + " TEXT, " + KEY_4 + " TEXT" + ")";
+        db.execSQL(create);
         Questions();
 
     }
@@ -54,9 +54,9 @@ public class Game extends SQLiteOpenHelper{
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase dt, int i, int i1) {
-        dt.execSQL("DROP TABLE IF EXISTS " + TBL_NAME);
-        onCreate(dt);
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        db.execSQL("DROP TABLE IF EXISTS " + TBL_NAME);
+        onCreate(db);
     }
 
     public void Questions(Question q){
@@ -71,8 +71,8 @@ public class Game extends SQLiteOpenHelper{
     }
 
     public List<Question> getQuestions(){
-        List<Question> qlist = new ArrayList<Question>();
-        String getQuery = "SELECT * FROM" + TBL_NAME;
+        List<Question> qlist = new ArrayList<>();
+        String getQuery = "SELECT * FROM " + TBL_NAME;
         database=this.getReadableDatabase();
         Cursor c = database.rawQuery(getQuery, null);
         if(c.moveToFirst()) {
@@ -88,15 +88,15 @@ public class Game extends SQLiteOpenHelper{
                 qlist.add(q);
             } while (c.moveToNext());
         }
-            return qlist;
+        return qlist;
 
     }
 
     public int countrows(){
         int r = 0;
-        String getQuery = "SELECT * FROM" + TBL_NAME;
-        SQLiteDatabase dt = this.getWritableDatabase();
-        Cursor c = dt.rawQuery(getQuery, null);
+        String getQuery = "SELECT * FROM " + TBL_NAME;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(getQuery, null);
         r = c.getCount();
         return r;
     }

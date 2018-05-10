@@ -10,14 +10,23 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button playgame;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        playgame = findViewById(R.id.start);
+
+        playgame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), PlayGame.class);
+                startActivity(i);
+            }
+        });
     }
 
-    public void buttonPressed(View v){
-        Intent i = new Intent(this, PlayGame.class);
-        startActivityForResult(i, 1);
-    }
+
 }
