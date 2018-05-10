@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Trivia</string>
+    <string name="question_one">Which sea creature has three hearts?</string>
+    <string name="question_two">Which instrument has forty-seven strings and seven pedals?</string>
+    <string name="question_three">Which is the largest and most dense of the four rocky planets?</string>
+    <string name="question_four">Who is the CEO of Google?</string>
 </resources>
