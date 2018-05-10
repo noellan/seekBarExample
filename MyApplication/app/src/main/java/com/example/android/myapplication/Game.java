@@ -24,7 +24,7 @@ public class Game extends SQLiteOpenHelper{
     private static final String KEY_ID = "ID", KEY_Q = "Q", KEY_ANS = "Ans", KEY_1 = "a", KEY_2 ="b", KEY_3 = "c", KEY_4 = "d";
     private SQLiteDatabase database;
 
-    public Game(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public Game(Context context) {
         super(context, Environment.getExternalStorageDirectory() + File.separator + "Trivia" + File.separator + TBL_NAME, null,1);
     }
 

@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonPressed(View v){
-        Intent i = new Intent(this, Game.class);
+        Intent i = new Intent(this, PlayGame.class);
         startActivityForResult(i, 1);
     }
 }
